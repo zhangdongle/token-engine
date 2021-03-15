@@ -1,0 +1,37 @@
+server:
+  port: 0
+spring:
+  profiles:
+    active: @config.profiles.active@
+  application:
+    name: provider-wallet
+  rabbitmq:
+    host: @config.rabbitmq.host@
+    port: @config.rabbitmq.port@
+    username: @config.rabbitmq.username@
+    password: @config.rabbitmq.password@
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 20
+        prefetch: 5
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+logging:
+  config: classpath:logback-spring.xml
+eth:
+  filepath: @eth.filepath@
+  node:
+    url: @eth.node.url@
+  wallet:
+    password: @eth.wallet.password@
+  client:
+    infura: @eth.node.url@
+  network:
+    chainId: 4
+  keystore:
+    path: /keystore
+    password: lIaN&wEi(@
+coin:
+  name: @coin.name@
